@@ -5,33 +5,7 @@ import axios from 'axios';
 import AppIcon from '../images/icon.png';
 import { Link } from 'react-router-dom';
 
-const styles = {
-  form: {
-    textAlign: 'center',
-  },
-  image: {
-    width: 80,
-    margin: '20px auto',
-  },
-  pageTitle: {
-    margin: '10px auto',
-  },
-  textField: {
-    margin: '10px auto',
-  },
-  button: {
-    marginTop: 20,
-    position: 'relative',
-  },
-  customError: {
-    color: 'red',
-    fontSize: '0.8rem',
-    marginTop: 10,
-  },
-  progress: {
-    position: 'absolute',
-  },
-};
+import styles from '../util/styles';
 
 class login extends Component {
   constructor() {
@@ -40,41 +14,41 @@ class login extends Component {
       email: '',
       password: '',
       loading: false,
-      errors: {},
+      errors: {}
     };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
-      loading: true,
+      loading: true
     });
 
     const userData = {
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
 
     axios
       .post('/login', userData)
       .then((res) => {
-        console.log(res.data);
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
         this.setState({
-          loading: false,
+          loading: false
         });
         this.props.history.push('/');
       })
       .catch((err) => {
         this.setState({
           errors: err.response.data,
-          loading: false,
+          loading: false
         });
       });
   };
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
 
@@ -125,7 +99,7 @@ class login extends Component {
             </Button>
             <br />
             <small>
-              If You don't have an account, please sign up <Link to="/signup">here</Link>{' '}
+              If You don't have an account, please signup <Link to="/signup">here</Link>
             </small>
           </form>
         </Grid>
@@ -136,7 +110,7 @@ class login extends Component {
 }
 
 login.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(login);
