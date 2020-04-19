@@ -38,7 +38,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 };
 
 export const logoutUser = () => (dispatch) => {
-  sessionStorage.removeItem('FBIdToken');
+  localStorage.removeItem('FBIdToken');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({ type: SET_UNAUTHENTICATED });
 };
@@ -56,8 +56,18 @@ export const getUserData = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const uploadImage = (formData) => (dispatch) => {
+  dispatch({ type: LOADING_USER });
+  axios
+    .post('/user/image', formData)
+    .then(() => {
+      dispatch(getUserData());
+    })
+    .catch((err) => console.log(err));
+};
+
 const setAuthorizationHeader = (token) => {
   const FBIdToken = `Bearer ${token}`;
-  sessionStorage.setItem('FBIdToken', FBIdToken);
+  localStorage.setItem('FBIdToken', FBIdToken);
   axios.defaults.headers.common['Authorization'] = FBIdToken;
 };

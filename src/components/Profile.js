@@ -1,15 +1,29 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Paper, Link as MuiLink, Typography, Button } from '@material-ui/core/';
+import { withStyles, Paper, Link as MuiLink, Typography, Button, IconButton, Tooltip } from '@material-ui/core/';
 import { connect } from 'react-redux';
 import styles from '../util/styles';
 import { Link } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
+import EditIcon from '@material-ui/icons/Edit';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import dayjs from 'dayjs';
+import { logoutUser, uploadImage } from '../redux/actions/userActions';
 
 class Profile extends Component {
+  handleImageChange = (event) => {
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append('image', image, image.name);
+    this.props.uploadImage(formData);
+  };
+
+  handleEditPicture = () => {
+    const fileInput = document.getElementById('imageInput');
+    fileInput.click();
+  };
+
   render() {
     const {
       classes,
@@ -26,6 +40,12 @@ class Profile extends Component {
           <div className={classes.profile}>
             <div className="image-wrapper">
               <img src={imageUrl} alt="profile" className="profile-image" />
+              <input type="file" id="imageInput" hidden="hidden" onChange={this.handleImageChange} />
+              <Tooltip title="Edit Profile Picture" placement="top">
+                <IconButton onClick={this.handleEditPicture} className="button">
+                  <EditIcon color="primary" />
+                </IconButton>
+              </Tooltip>
             </div>
             <hr />
             <div className="profile-details">
@@ -80,7 +100,9 @@ class Profile extends Component {
 
 Profile.propTypes = {
   classes: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired
 };
 
 // user is brought form the global state and mapped into our component props
@@ -88,4 +110,9 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+const mapActionsToProps = {
+  logoutUser,
+  uploadImage
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Profile));
