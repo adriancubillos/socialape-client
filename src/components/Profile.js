@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Paper, Link as MuiLink, Typography, Button, IconButton, Tooltip } from '@material-ui/core/';
+import { withStyles, Paper, Link as MuiLink, Typography, Button } from '@material-ui/core/';
 import { connect } from 'react-redux';
 import styles from '../util/styles';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import dayjs from 'dayjs';
 import { logoutUser, uploadImage } from '../redux/actions/userActions';
 import EditDetails from './EditDetails';
+import MyButton from '../util/MyButton';
 
 class Profile extends Component {
   handleImageChange = (event) => {
@@ -47,11 +48,14 @@ class Profile extends Component {
             <div className="image-wrapper">
               <img src={imageUrl} alt="profile" className="profile-image" />
               <input type="file" id="imageInput" hidden="hidden" onChange={this.handleImageChange} />
-              <Tooltip title="Edit Profile Picture" placement="top">
-                <IconButton onClick={this.handleEditPicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              <MyButton
+                tip="Edit profile picture"
+                tipPlacement="top"
+                onClick={this.handleEditPicture}
+                btnClassName="button"
+              >
+                <EditIcon color="primary" />
+              </MyButton>
             </div>
             <hr />
             <div className="profile-details">
@@ -79,11 +83,9 @@ class Profile extends Component {
               )}
               <CalendarTodayIcon color="primary" /> <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
-            <Tooltip title="Logout" placement="top">
-              <IconButton onClick={this.handleLogout} className={classes.logoutButton}>
-                <ExitToAppIcon color="primary" />
-              </IconButton>
-            </Tooltip>
+            <MyButton tip="Logout" tipPlacement="top" onClick={this.handleLogout} btnClassName={classes.logoutButton}>
+              <ExitToAppIcon color="primary" />
+            </MyButton>
             <EditDetails />
           </div>
         </Paper>
