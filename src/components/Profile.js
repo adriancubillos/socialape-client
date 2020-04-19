@@ -8,8 +8,10 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import EditIcon from '@material-ui/icons/Edit';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import dayjs from 'dayjs';
 import { logoutUser, uploadImage } from '../redux/actions/userActions';
+import EditDetails from './EditDetails';
 
 class Profile extends Component {
   handleImageChange = (event) => {
@@ -22,6 +24,10 @@ class Profile extends Component {
   handleEditPicture = () => {
     const fileInput = document.getElementById('imageInput');
     fileInput.click();
+  };
+
+  handleLogout = () => {
+    this.props.logoutUser();
   };
 
   render() {
@@ -73,6 +79,12 @@ class Profile extends Component {
               )}
               <CalendarTodayIcon color="primary" /> <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
+            <Tooltip title="Logout" placement="top">
+              <IconButton onClick={this.handleLogout} className={classes.logoutButton}>
+                <ExitToAppIcon color="primary" />
+              </IconButton>
+            </Tooltip>
+            <EditDetails />
           </div>
         </Paper>
       ) : (

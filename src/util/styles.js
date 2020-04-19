@@ -77,5 +77,8 @@ export default {
     '& a': {
       margin: '20px 10px'
     }
+  },
+  logoutButton: {
+    float: 'right'
   }
 };
