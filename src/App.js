@@ -21,7 +21,7 @@ import axios from 'axios';
 
 const theme = createMuiTheme(themeObj);
 
-const token = localStorage.FBIdToken;
+const token = sessionStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
 

@@ -9,15 +9,15 @@ const styles = {
   card: {
     position: 'relative',
     display: 'flex',
-    marginBottom: 20,
+    marginBottom: 20
   },
   image: {
-    width: 85,
+    width: 85
   },
   content: {
     padding: 25,
-    objectFit: 'cover',
-  },
+    objectFit: 'cover'
+  }
 };
 
 class Scream extends Component {
@@ -25,7 +25,7 @@ class Scream extends Component {
     dayjs.extend(relativeTime);
     const {
       classes,
-      scream: { body, createdAt, userImage, userHandle, screamId, likeCount, commentCount },
+      scream: { body, createdAt, userImage, userHandle, screamId, likeCount, commentCount }
     } = this.props;
     return (
       <Card className={classes.card}>

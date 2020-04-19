@@ -147,7 +147,7 @@ const mapStateToProps = (state) => ({
   UI: state.UI
 });
 
-// loginUser action is brought and mapped into our component props
+// signupUser action is brought and mapped into our component props
 const mapActionsToProps = {
   signupUser
 };
