@@ -3,18 +3,20 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import jwtDecode from 'jwt-decode';
-//Components
+// Redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
+// Components
 import Navbar from './components/Navbar';
-
-//Pages
+// Pages
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
-//Util
+// Util
 import AuthRoute from './util/AuthRoute';
 import themeObj from './util/theme';
 
-const theme = createMuiTheme();
+const theme = createMuiTheme(themeObj);
 
 let authenticated;
 const token = localStorage.FBIdToken;
@@ -33,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <div className="App">
+        <Provider store={store}>
           <Router>
             <Navbar />
             <div className="container">
@@ -44,7 +46,7 @@ class App extends Component {
               </Switch>
             </div>
           </Router>
-        </div>
+        </Provider>
       </MuiThemeProvider>
     );
   }
