@@ -107,5 +107,14 @@ export default {
   },
   dialogContent: {
     padding: 20
+  },
+  expandScreamButton: {
+    position: 'absolute',
+    left: '90%'
+  },
+  spinnerDiv: {
+    textAlign: 'center',
+    marginTop: 40,
+    marginBottom: 40
   }
 };

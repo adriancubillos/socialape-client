@@ -68,7 +68,7 @@ class PostScream extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton tip="Post a scream" onClick={this.handleOpen}>
+        <MyButton tip="Post a scream" onClick={this.handleOpen} tipPlacement="left">
           <AddIcon />
         </MyButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
