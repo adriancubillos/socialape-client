@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles, Typography, Card, CardMedia, CardContent } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { connect } from 'react-redux';
@@ -12,6 +11,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteScream from './DeleteScream';
+import ScreamDialog from './ScreamDialog';
 
 const styles = {
   card: {
@@ -90,6 +90,7 @@ class Scream extends Component {
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} Comments</span>
+          <ScreamDialog screamId={screamId} userHandle={userHandle}></ScreamDialog>
         </CardContent>
       </Card>
     );

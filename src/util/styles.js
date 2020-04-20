@@ -98,5 +98,14 @@ export default {
     position: 'absolute',
     top: '2%',
     left: '90%'
+  },
+  profileImage: {
+    maxWidth: 200,
+    height: 200,
+    borderRadius: '50%',
+    objectFit: 'cover' // If ratio is not 1:1 prevent image from stretching
+  },
+  dialogContent: {
+    padding: 20
   }
 };

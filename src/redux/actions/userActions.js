@@ -12,10 +12,7 @@ export const loginUser = (userData, history) => (dispatch) => {
       history.push('/');
     })
     .catch((err) => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data
-      });
+      dispatch({ type: SET_ERRORS, payload: err.response.data });
     });
 };
 
@@ -30,10 +27,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       history.push('/');
     })
     .catch((err) => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data
-      });
+      dispatch({ type: SET_ERRORS, payload: err.response.data });
     });
 };
 
@@ -48,10 +42,7 @@ export const getUserData = () => (dispatch) => {
   axios
     .get('/user')
     .then((res) => {
-      dispatch({
-        type: SET_USER,
-        payload: res.data
-      });
+      dispatch({ type: SET_USER, payload: res.data });
     })
     .catch((err) => console.log(err));
 };
