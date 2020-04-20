@@ -81,9 +81,22 @@ export default {
   logoutButton: {
     float: 'right'
   },
-  deleteButton: {
+  deleteScreamButton: {
     position: 'absolute',
     top: '10%',
+    left: '90%'
+  },
+  submitButton: {
+    position: 'relative',
+    float: 'right',
+    marginTop: 10
+  },
+  progressSpinner: {
+    position: 'absolute'
+  },
+  closeScreamDialogButton: {
+    position: 'absolute',
+    top: '2%',
     left: '90%'
   }
 };

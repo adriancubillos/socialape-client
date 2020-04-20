@@ -20,7 +20,7 @@ const styles = {
     marginBottom: 20
   },
   image: {
-    width: 85
+    width: 170
   },
   content: {
     padding: 25,

@@ -34,7 +34,12 @@ class DeleteScream extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <MyButton tip="Delete scream" tipPlacement="top" onClick={this.handleOpen} btnClassName={classes.deleteButton}>
+        <MyButton
+          tip="Delete scream"
+          tipPlacement="top"
+          onClick={this.handleOpen}
+          btnClassName={classes.deleteScreamButton}
+        >
           <DeleteOutlineIcon color="secondary" />
         </MyButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
