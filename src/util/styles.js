@@ -80,5 +80,10 @@ export default {
   },
   logoutButton: {
     float: 'right'
+  },
+  deleteButton: {
+    position: 'absolute',
+    top: '10%',
+    left: '90%'
   }
 };
