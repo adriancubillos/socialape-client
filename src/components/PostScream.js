@@ -11,7 +11,7 @@ import {
   Button
 } from '@material-ui/core/';
 import styles from '../util/styles';
-import { postScream } from '../redux/actions/dataActions';
+import { postScream, clearErrors } from '../redux/actions/dataActions';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import MyButton from '../util/MyButton';
@@ -31,9 +31,10 @@ class PostScream extends Component {
     }
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
       this.setState({
-        body: ''
+        body: '',
+        open: false,
+        errors: {}
       });
-      this.handleClose();
     }
   }
 
@@ -42,16 +43,19 @@ class PostScream extends Component {
   };
 
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
 
   handleChange = (event) => {
     this.setState({
+      errors: {},
       [event.target.name]: event.target.value
     });
   };
 
   handleSubmit = (event) => {
+    this.props.clearErrors();
     event.preventDefault();
     this.props.postScream({ body: this.state.body });
   };
@@ -107,6 +111,7 @@ class PostScream extends Component {
 
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
 
@@ -115,7 +120,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  postScream
+  postScream,
+  clearErrors
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PostScream));
