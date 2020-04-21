@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { getScream } from '../../redux/actions/dataActions';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
@@ -60,6 +61,8 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{commentCount} Comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
         {comments && comments.length > 0 && <hr className={classes.visibleSeparator} />}
         <Comments comments={comments} />
       </Grid>
@@ -79,7 +82,6 @@ class ScreamDialog extends Component {
           <MyButton tip="Close" onClick={this.handleClose} tipClassName={classes.closeScreamDialogButton}>
             <CloseIcon color="primary" />
           </MyButton>
-          {/* <DialogTitle>Post a scream</DialogTitle> */}
           <DialogContent className={classes.dialogContent}>{dialogMarkup}</DialogContent>
         </Dialog>
       </Fragment>

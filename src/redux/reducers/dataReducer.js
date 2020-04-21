@@ -5,7 +5,8 @@ import {
   LOADING_DATA,
   DELETE_SCREAM,
   POST_SCREAM,
-  SET_ONE_SCREAM
+  SET_ONE_SCREAM,
+  CREATE_COMMENT
 } from '../types';
 
 const initialState = {
@@ -38,7 +39,10 @@ export default function (state = initialState, action) {
       state.screams[index] = action.payload;
       // if screamId is the same update scream with payload
       if (state.scream.screamId === action.payload.screamId) {
-        state.scream = action.payload; // This should only change the likesCount field
+        // BUG Review this as I fixed a bug here.
+        // TODO when liking on the scream dialog comments where not being passed as likeScream API response dos not send comments array back.
+        //Need to update only the likesCount field
+        state.scream = { ...state.scream, likeCount: action.payload.likeCount };
       }
       return {
         ...state
@@ -53,6 +57,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         screams: [action.payload, ...state.screams]
+      };
+    case CREATE_COMMENT:
+      return {
+        ...state,
+        scream: {
+          ...state.scream,
+          comments: [action.payload, ...state.scream.comments]
+        }
       };
     default:
       return state;

@@ -8,7 +8,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import EditIcon from '@material-ui/icons/Edit';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
 import dayjs from 'dayjs';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 import EditDetails from './EditDetails';
@@ -83,8 +83,8 @@ class Profile extends Component {
               )}
               <CalendarTodayIcon color="primary" /> <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
-            <MyButton tip="Logout" tipPlacement="top" onClick={this.handleLogout} btnClassName={classes.logoutButton}>
-              <ExitToAppIcon color="primary" />
+            <MyButton tip="Logout" tipPlacement="top" onClick={this.handleLogout}>
+              <CancelPresentationIcon color="primary" />
             </MyButton>
             <EditDetails />
           </div>

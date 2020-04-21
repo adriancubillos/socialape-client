@@ -30,7 +30,7 @@ export default {
   },
   visibleSeparator: {
     width: '100%',
-    borderBottom: '1px solid rgba(0,0,0,0.1)',
+    borderBottom: '1px solid rgba(0, 188, 212, 1)',
     marginBottom: 20
   },
   paper: {
@@ -55,6 +55,7 @@ export default {
     },
     '& .profile-details': {
       textAlign: 'center',
+      marginBottom: 20,
       '& span, svg': {
         verticalAlign: 'middle'
       },
@@ -78,7 +79,7 @@ export default {
       margin: '20px 10px'
     }
   },
-  logoutButton: {
+  editProfileButton: {
     float: 'right'
   },
   deleteScreamButton: {
