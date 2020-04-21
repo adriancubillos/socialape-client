@@ -20,7 +20,8 @@ const styles = {
     marginBottom: 20
   },
   image: {
-    width: 170
+    objectFit: 'cover',
+    width: '22%'
   },
   content: {
     padding: 25,

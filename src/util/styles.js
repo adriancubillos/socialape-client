@@ -99,11 +99,11 @@ export default {
     top: '2%',
     left: '90%'
   },
-  profileImage: {
-    maxWidth: 200,
-    height: 200,
+  screamDialogImage: {
+    height: 215,
+    objectFit: 'cover', // If ratio is not 1:1 prevent image from stretching
     borderRadius: '50%',
-    objectFit: 'cover' // If ratio is not 1:1 prevent image from stretching
+    width: '100%'
   },
   dialogContent: {
     padding: 20
@@ -116,5 +116,14 @@ export default {
     textAlign: 'center',
     marginTop: 40,
     marginBottom: 40
+  },
+  commentImage: {
+    maxWidth: '100%',
+    height: 100,
+    objectFit: 'cover', // If ratio is not 1:1 prevent image from stretching
+    borderRadius: '50%'
+  },
+  commentData: {
+    marginLeft: 20
   }
 };

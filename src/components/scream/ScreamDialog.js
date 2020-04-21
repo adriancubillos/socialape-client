@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import { getScream } from '../../redux/actions/dataActions';
 import LikeButton from './LikeButton';
+import Comments from './Comments';
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
@@ -29,7 +30,7 @@ class ScreamDialog extends Component {
   render() {
     const {
       classes,
-      scream: { screamId, body, createdAt, likeCount, commentCount, userImage, userHandle },
+      scream: { screamId, body, createdAt, likeCount, commentCount, userImage, userHandle, comments },
       UI: { loading }
     } = this.props;
 
@@ -40,7 +41,7 @@ class ScreamDialog extends Component {
     ) : (
       <Grid container spacing={2}>
         <Grid item sm={5}>
-          <img src={userImage} alt="Profile" className={classes.profileImage} />
+          <img src={userImage} alt="Profile" className={classes.screamDialogImage} />
         </Grid>
         <Grid item sm={7}>
           <Typography component={Link} color="primary" variant="h5" to={`/users/${userHandle}`}>
@@ -48,7 +49,7 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography color="textSecondary" variant="body2">
-            {dayjs(createdAt).format('h:mm a, MMM DD YYYY')}
+            {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"> {body}</Typography>
@@ -59,6 +60,8 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{commentCount} Comments</span>
         </Grid>
+        {comments && comments.length > 0 && <hr className={classes.visibleSeparator} />}
+        <Comments comments={comments} />
       </Grid>
     );
 
