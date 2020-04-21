@@ -21,11 +21,13 @@ const styles = {
   },
   image: {
     objectFit: 'cover',
-    width: '22%'
+    minWidth: '22%',
+    maxHeight: 200
   },
   content: {
     padding: 25,
-    objectFit: 'cover'
+    objectFit: 'cover',
+    maxWidth: '67%'
   }
 };
 

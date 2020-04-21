@@ -63,17 +63,16 @@ class CommentForm extends Component {
       </Grid>
     ) : (
       <Grid container spacing={1}>
-        <Grid item sm={12} style={{ textAlign: 'center' }}>
+        <Grid item sm={12} xs={12} style={{ textAlign: 'center' }}>
           <Typography variant="body2" align="center">
             Login or signup to add comments
           </Typography>
         </Grid>
-        <Grid item sm={6} style={{ textAlign: 'right' }}>
+        <Grid item sm={12} xs={12} style={{ textAlign: 'center' }}>
           <Button variant="contained" color="primary" component={Link} to="/login">
             Login
           </Button>
-        </Grid>
-        <Grid item sm={6}>
+
           <Button variant="contained" color="secondary" component={Link} to="/signup">
             Signup
           </Button>

@@ -97,11 +97,10 @@ export default {
   },
   closeScreamDialogButton: {
     position: 'absolute',
-    top: '2%',
-    left: '90%'
+    top: '1%',
+    left: '85%'
   },
   screamDialogImage: {
-    height: 215,
     objectFit: 'cover', // If ratio is not 1:1 prevent image from stretching
     borderRadius: '50%',
     width: '100%'
