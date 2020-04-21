@@ -59,6 +59,20 @@ export default function (state = initialState, action) {
         screams: [action.payload, ...state.screams]
       };
     case CREATE_COMMENT:
+      // BUG Review this as I fixed a bug here.
+      // TODO when commenting on the scream dialog commentCount was not updating in scram nor in screams.
+      let indexCreateComment = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId);
+      // if screamId is the same update commentCount in screams and scream
+      if (state.scream.screamId === action.payload.screamId) {
+        //Need to update only the commentsCount field on the scream
+        state.scream = { ...state.scream, commentCount: state.scream.commentCount + 1 };
+        //Need to replace the scream in the screams with the recently updated scream containing the new comment count
+        state.screams = [
+          ...state.screams.slice(0, indexCreateComment),
+          state.scream,
+          ...state.screams.slice(indexCreateComment + 1)
+        ];
+      }
       return {
         ...state,
         scream: {
