@@ -36,6 +36,10 @@ export default function (state = initialState, action) {
     case UNLIKE_SCREAM:
       let index = state.screams.findIndex((scream) => scream.screamId === action.payload.screamId);
       state.screams[index] = action.payload;
+      // if screamId is the same update scream with payload
+      if (state.scream.screamId === action.payload.screamId) {
+        state.scream = action.payload; // This should only change the likesCount field
+      }
       return {
         ...state
       };

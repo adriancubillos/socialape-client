@@ -5,9 +5,12 @@ import MyButton from '../util/MyButton';
 import styles from '../util/styles';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
+import { getScream } from '../redux/actions/dataActions';
+import LikeButton from './LikeButton';
+// Icons
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
-import { getScream } from '../redux/actions/dataActions';
+import ChatIcon from '@material-ui/icons/Chat';
 
 class ScreamDialog extends Component {
   state = {
@@ -49,6 +52,12 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1"> {body}</Typography>
+          <LikeButton screamId={screamId} />
+          <span>{likeCount} Likes</span>
+          <MyButton tip="comments" tipPlacement="top">
+            <ChatIcon color="primary" />
+          </MyButton>
+          <span>{commentCount} Comments</span>
         </Grid>
       </Grid>
     );
