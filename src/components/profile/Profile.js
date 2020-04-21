@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, Paper, Link as MuiLink, Typography, Button } from '@material-ui/core/';
 import { connect } from 'react-redux';
-import styles from '../util/styles';
+import styles from '../../util/styles';
 import { Link } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
@@ -10,9 +10,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import dayjs from 'dayjs';
-import { logoutUser, uploadImage } from '../redux/actions/userActions';
+import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 import EditDetails from './EditDetails';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 class Profile extends Component {
   handleImageChange = (event) => {

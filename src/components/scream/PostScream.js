@@ -10,11 +10,11 @@ import {
   CircularProgress,
   Button
 } from '@material-ui/core/';
-import styles from '../util/styles';
-import { postScream, clearErrors } from '../redux/actions/dataActions';
+import styles from '../../util/styles';
+import { postScream, clearErrors } from '../../redux/actions/dataActions';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 class PostScream extends Component {
   state = {

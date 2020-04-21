@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from '@material-ui/core/';
-import styles from '../util/styles';
-import { editUserDetails } from '../redux/actions/userActions';
+import styles from '../../util/styles';
+import { editUserDetails } from '../../redux/actions/userActions';
 import EditIcon from '@material-ui/icons/Edit';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 class EditDetails extends Component {
   state = {

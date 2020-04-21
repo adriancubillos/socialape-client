@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withStyles, CircularProgress, Grid, Typography, Link, Dialog, DialogContent } from '@material-ui/core';
-import MyButton from '../util/MyButton';
-import styles from '../util/styles';
+import MyButton from '../../util/MyButton';
+import styles from '../../util/styles';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
-import { getScream } from '../redux/actions/dataActions';
+import { getScream } from '../../redux/actions/dataActions';
 import LikeButton from './LikeButton';
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
