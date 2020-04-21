@@ -99,6 +99,23 @@ export const deleteScream = (screamId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+// Get user's data. Other than authenticated
+// We could create a new object to store the random user and its screams
+// in the global state, but as this data will be static
+// (won't change over time) we don't need it.
+export const getUserByHandleData = (userHandle) => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`/user/${userHandle}`)
+    .then((res) => {
+      dispatch({ type: SET_SCREAMS, payload: res.data.screams });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: SET_SCREAMS, payload: null });
+    });
+};
+
 // Clear errors (when a function only dispatches an action, it is known as an Action Creator)
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

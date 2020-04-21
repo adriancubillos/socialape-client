@@ -9,7 +9,6 @@ export const LOADING_UI = 'LOADING_UI';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const LOADING_DATA = 'LOADING_DATA';
 export const STOP_LOADING_UI = 'STOP_LOADING_UI';
-
 // Data reducer types
 export const SET_SCREAMS = 'SET_SCREAMS';
 export const SET_ONE_SCREAM = 'SET_ONE_SCREAM';
