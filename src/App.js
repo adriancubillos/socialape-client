@@ -20,6 +20,8 @@ import AuthRoute from './util/AuthRoute';
 import themeObj from './util/theme';
 import axios from 'axios';
 
+import notFoundPage from './components/notFoundPage';
+
 const theme = createMuiTheme(themeObj);
 
 axios.defaults.baseURL = 'https://us-central1-socialape-28091.cloudfunctions.net/api';
@@ -51,6 +53,7 @@ class App extends Component {
                 <AuthRoute exact path="/signup" component={signup} />
                 <Route exact path="/users/:handle" component={user} />
                 <Route exact path="/users/:handle/scream/:screamId" component={user} />
+                <Route component={notFoundPage} />
               </Switch>
             </div>
           </Router>
