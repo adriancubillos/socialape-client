@@ -1,3 +1,5 @@
+import theme from './theme';
+
 export default {
   form: {
     textAlign: 'center'
@@ -30,7 +32,7 @@ export default {
   },
   visibleSeparator: {
     width: '100%',
-    borderBottom: '1px solid rgba(0, 188, 212, 1)',
+    borderBottom: '1px solid' + theme.palette.primary.main,
     marginBottom: 20
   },
   paper: {
@@ -125,5 +127,48 @@ export default {
   },
   commentData: {
     marginLeft: 20
+  },
+  skeletonCard: {
+    display: 'flex',
+    marginBottom: 20
+  },
+  skeletonCover: {
+    minWidth: 200,
+    objectFit: 'cover'
+  },
+  skeletonContent: {
+    width: '100%',
+    flexDirection: 'column',
+    padding: 25
+  },
+  skeletonHandle: {
+    width: 60,
+    height: 18,
+    backgroundColor: theme.palette.primary.main,
+    marginBottom: 7
+  },
+  skeletonDate: {
+    height: 14,
+    width: 100,
+    backgroundColor: 'rgba(0,0,0, 0.2)',
+    marginBottom: 10
+  },
+  skeletonFullLine: {
+    height: 15,
+    width: '90%',
+    backgroundColor: 'rgba(0,0,0, 0.6)',
+    marginBottom: 10
+  },
+  skeletonHalfLine: {
+    height: 15,
+    width: '50%',
+    backgroundColor: 'rgba(0,0,0, 0.6)',
+    marginBottom: 10
+  },
+  profileSkeletonHandle: {
+    height: 18,
+    backgroundColor: theme.palette.primary.main,
+    width: 60,
+    margin: '0 auto 7px auto'
   }
 };

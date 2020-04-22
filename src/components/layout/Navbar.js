@@ -5,11 +5,18 @@ import PropTypes from 'prop-types';
 import MyButton from '../../util/MyButton';
 import PostScream from '../scream/PostScream';
 //Material-UI stuff
-import { AppBar, Toolbar, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Button, Tooltip } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
+import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
 import Notifications from './Notifications';
+import { logoutUser } from '../../redux/actions/userActions';
 
 class Navbar extends Component {
+  handleLogout = () => {
+    this.props.logoutUser();
+    window.history.pushState(null, null, '/');
+  };
+
   render() {
     const { authenticated } = this.props;
     return (
@@ -24,6 +31,11 @@ class Navbar extends Component {
                 </MyButton>
               </Link>
               <Notifications />
+              <Tooltip title="Logout" placement="bottom">
+                <Button color="inherit" component={Link} to="/" onClick={this.handleLogout}>
+                  <CancelPresentationIcon />
+                </Button>
+              </Tooltip>
             </Fragment>
           ) : (
             <Fragment>
@@ -45,11 +57,12 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  authenticated: PropTypes.bool.isRequired
+  authenticated: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   authenticated: state.user.authenticated
 });
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { logoutUser })(Navbar);

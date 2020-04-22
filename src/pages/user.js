@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getUserByHandleData } from '../redux/actions/dataActions';
 import axios from 'axios';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography, Paper } from '@material-ui/core';
 import Scream from '../components/scream/Scream';
 import StaticProfile from '../components/profile/StaticProfile';
+import ScreamSkeleton from '../util/ScreamSkeleton';
+import ProfileSkeleton from '../util/ProfileSkeleton.js';
+import AddIcon from '@material-ui/icons/Add';
+import MyButton from '../util/MyButton';
 
 class user extends Component {
   state = {
@@ -38,9 +42,17 @@ class user extends Component {
     const { screamIdParam } = this.state;
 
     let screamsMarkup = loading ? (
-      <p>Loading...</p>
-    ) : screams === null ? (
-      <p>No scream for this user</p>
+      <ScreamSkeleton />
+    ) : screams === null || screams.length === 0 ? (
+      <Paper elevation={3} style={{ padding: 25 }}>
+        <Typography variant="body1">
+          You don't have any screams yet. Post a scream using the{' '}
+          <MyButton tip="" tipPlacement="bottom" btnClassName="postHint">
+            <AddIcon color="primary" />
+          </MyButton>{' '}
+          in the navigation bar.
+        </Typography>
+      </Paper>
     ) : !screamIdParam ? (
       screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
     ) : (
@@ -55,11 +67,7 @@ class user extends Component {
     return (
       <Grid container spacing={2}>
         <Grid item sm={4} xs={12}>
-          {this.state.profile === null ? (
-            <p>Loading User profile...</p>
-          ) : (
-            <StaticProfile profile={this.state.profile} />
-          )}
+          {this.state.profile === null ? <ProfileSkeleton /> : <StaticProfile profile={this.state.profile} />}
         </Grid>
         <Grid item sm={8} xs={12}>
           {screamsMarkup}

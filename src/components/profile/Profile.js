@@ -13,6 +13,7 @@ import dayjs from 'dayjs';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 import EditDetails from './EditDetails';
 import MyButton from '../../util/MyButton';
+import ProfileSkeleton from '../../util/ProfileSkeleton';
 
 class Profile extends Component {
   handleImageChange = (event) => {
@@ -105,7 +106,7 @@ class Profile extends Component {
         </Paper>
       )
     ) : (
-      <p> Profile Skeleton </p>
+      <ProfileSkeleton />
     );
 
     return profileMarkup;
