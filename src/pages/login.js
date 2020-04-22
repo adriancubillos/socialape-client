@@ -92,7 +92,7 @@ class login extends Component {
             </Button>
             <br />
             <small>
-              If You don't have an account, please signup <Link to="/signup">here</Link>
+              If you don't have an account, please signup <Link to="/signup">here</Link>
             </small>
           </form>
         </Grid>

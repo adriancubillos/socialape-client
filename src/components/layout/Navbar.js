@@ -7,7 +7,7 @@ import PostScream from '../scream/PostScream';
 //Material-UI stuff
 import { AppBar, Toolbar, Button } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import Notifications from './Notifications';
 
 class Navbar extends Component {
   render() {
@@ -23,9 +23,7 @@ class Navbar extends Component {
                   <HomeIcon />
                 </MyButton>
               </Link>
-              <MyButton tip="Notifications" tipPlacement="right">
-                <NotificationsIcon />
-              </MyButton>
+              <Notifications />
             </Fragment>
           ) : (
             <Fragment>
