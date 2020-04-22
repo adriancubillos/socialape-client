@@ -10,9 +10,6 @@ import dayjs from 'dayjs';
 
 //This is a functional component
 const StaticProfile = (props) => {
-  console.log('### My Log @@@: ---------------------------------------------');
-  console.log('### My Log @@@: StaticProfile -> props', props);
-  console.log('### My Log @@@: ---------------------------------------------');
   const {
     classes,
     profile: { handle, createdAt, imageUrl, bio, website, location }
