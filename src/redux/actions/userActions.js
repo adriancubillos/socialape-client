@@ -5,7 +5,8 @@ import {
   LOADING_UI,
   SET_UNAUTHENTICATED,
   LOADING_USER,
-  MARK_NOTIFICATIONS_READ
+  MARK_NOTIFICATIONS_READ,
+  GENERAL_ERRORS
 } from '../types';
 import axios from 'axios';
 
@@ -52,7 +53,10 @@ export const getUserData = () => (dispatch) => {
     .then((res) => {
       dispatch({ type: SET_USER, payload: res.data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 export const uploadImage = (formData) => (dispatch) => {
@@ -62,7 +66,10 @@ export const uploadImage = (formData) => (dispatch) => {
     .then(() => {
       dispatch(getUserData());
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 export const editUserDetails = (userDetails) => (dispatch) => {
@@ -72,7 +79,10 @@ export const editUserDetails = (userDetails) => (dispatch) => {
     .then(() => {
       dispatch(getUserData());
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 export const markNotificationsRead = (notificationIds) => (dispatch) => {
@@ -81,7 +91,10 @@ export const markNotificationsRead = (notificationIds) => (dispatch) => {
     .then(() => {
       dispatch({ type: MARK_NOTIFICATIONS_READ });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 const setAuthorizationHeader = (token) => {

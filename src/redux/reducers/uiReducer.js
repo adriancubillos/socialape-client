@@ -1,4 +1,4 @@
-import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, STOP_LOADING_UI } from '../types';
+import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI, STOP_LOADING_UI, GENERAL_ERRORS, CLEAR_GENERAL_ERRORS } from '../types';
 
 const initialState = {
   loading: false,
@@ -28,6 +28,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false
+      };
+    case GENERAL_ERRORS:
+      return {
+        ...state,
+        genErrors: action.payload
+      };
+    case CLEAR_GENERAL_ERRORS:
+      return {
+        ...state,
+        genErrors: null
       };
     default:
       return state;

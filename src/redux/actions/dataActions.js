@@ -10,7 +10,8 @@ import {
   LOADING_UI,
   SET_ONE_SCREAM,
   STOP_LOADING_UI,
-  CREATE_COMMENT
+  CREATE_COMMENT,
+  GENERAL_ERRORS
 } from '../types';
 import axios from 'axios';
 
@@ -37,7 +38,10 @@ export const getScream = (screamId) => (dispatch) => {
       dispatch({ type: SET_ONE_SCREAM, payload: res.data });
       dispatch({ type: STOP_LOADING_UI });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 // Post a scream
@@ -62,7 +66,10 @@ export const likeScream = (screamId) => (dispatch) => {
     .then((res) => {
       dispatch({ type: LIKE_SCREAM, payload: res.data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 // Unlike a scream
@@ -72,7 +79,10 @@ export const unlikeScream = (screamId) => (dispatch) => {
     .then((res) => {
       dispatch({ type: UNLIKE_SCREAM, payload: res.data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 // Create Comment
@@ -96,7 +106,10 @@ export const deleteScream = (screamId) => (dispatch) => {
     .then(() => {
       dispatch({ type: DELETE_SCREAM, payload: screamId });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: GENERAL_ERRORS, payload: err });
+    });
 };
 
 // Get user's data. Other than authenticated
